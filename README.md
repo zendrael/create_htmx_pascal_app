@@ -2,9 +2,9 @@
 
 This project aims for HTMX frontend with (fast)CGI backend written in Object Pascal using the FreePascal compiler and libs.
 
-([HTMX official website and docs](https://htmx.org/))
+[HTMX official website and docs](https://htmx.org/)
 
-([FreePascal CGI docs](https://wiki.freepascal.org/CGI_Web_Programming)
+[FreePascal CGI docs](https://wiki.freepascal.org/CGI_Web_Programming)
 
 __You must have__ at least FreePascal compiler installed on your environment and Python 3 to use as local web server in order to make this CGI + HTMX example to work.
 
