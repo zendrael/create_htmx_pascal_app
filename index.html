@@ -11,14 +11,19 @@
 </head>
 
 <body>
+
   <h1>Pascal + HTMX</h1>
+  
   <div id="app-main">
     <button class="btn" hx-get="cgi-bin/app.cgi" hx-swap="outerHTML">
       Click me to call the CGI!
     </button>
   </div>
-  <p class="btn" style="font-weight: bold;">Note that the page is not reloaded<br />and HTMX will do the work of JS for
-    you.</p>
-</body>
+
+  <p class="btn" style="font-weight: bold;">Note that the page is not reloaded
+    <br />
+    and HTMX will do the work of JS for you.</p>
+
+  </body>
 
 </html>
