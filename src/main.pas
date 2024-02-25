@@ -1,44 +1,39 @@
 program main;
- 
+
 {$mode objfpc}{$H+}
  
 uses
-  {BEGIN LOCAL SERVER}
-  sysutils, fpwebfile, fpmimetypes, fphttpapp, httproute, httpdefs;
-  {END LOCAL SERVER}
-  {BEGIN CGI}
-  //fpCGI;
-  {END CGI}
+  {$ifdef UNIX}
+    cthreads, cmem,
+  {$endif} 
+  //fphttpapp, 
+  fpcgi,
+  httpdefs, httproute;
+ 
+procedure route1(aReq: TRequest; aResp: TResponse);
+begin
+  aResp.content:='<h1>CGI route 1 called!</h1>';
+end;
+ 
+procedure route2(aReq: TRequest; aResp: TResponse);
+begin
+  aResp.content:='<h1>Route 2 from CGI called!</h1>';
+end;
 
-Var
+var
   aDir : string; //only for localserver
 
 begin
-  {BEGIN LOCAL SERVER}
-  MimeTypes.LoadKnownTypes;
-  Application.Title:='HTMX server';
-  Application.Port:=3000;
-  Application.Initialize;
-  if Application.HasOption('d','directory') then
-    aDir:=Application.GetOptionValue('d','directory')
-  else
-    aDir:=ExtractFilePath(ParamStr(0))+'..\dev\';
-  aDir := ExpandFileName(aDir);
-  RegisterFileLocation('dev',aDir);
-  //HTTPRouter.RegisterRoute('/api', @apiEndpoint, false);
-  //Writeln('open a webbrowser: '+Application.HostName+':'+inttostr(Application.port)+'/dev/index.html');
-
-  Application.Run;
-  {END LOCAL SERVER}
-
-  {BEGIN CGI}
-  {
-    //You MUST always return HTML in order to htmX to work
-  WriteLn('Content-Type:text/html',#10#13);
-
-  //start your app here,
-  //and remember to ALWAYS return HTML elements
-  WriteLn('<h1>CGI WORKING!</h1>');
-  }
-  {END CGI}
-end.   
+  HTTPRouter.registerRoute('/', @route1, true);
+  HTTPRouter.registerRoute('/route2', @route2);
+  // Application.port := 8080;
+  // Application.threaded := true;
+  Application.initialize;
+  // if Application.HasOption('d','directory') then
+  //   aDir:=Application.GetOptionValue('d','directory')
+  // else
+  //   aDir:=ExtractFilePath(ParamStr(0))+'..\dev\';
+  // aDir := ExpandFileName(aDir);
+  // RegisterFileLocation('dev',aDir);
+  Application.run;
+end.

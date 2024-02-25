@@ -16,13 +16,15 @@ __YOU MUST HAVE__ at least FreePascal compiler installed on your environment (an
 
 ## Step 4: Run the example
 - open the terminal inside VSCode
-- and compile with ```./scripts/buildDev.sh```
+- __on Windows__ compile/run with ```./scripts/buildDev.ps1```
+- __on Linux or macOS__ compile/run with ```./scripts/buildDev.sh```
 - access project on ```http://localhost:3000```
 - __check your browser to see if the project works__
 - CTRL+C on VScode terminal to stop the server
 
 ## What to upload to my own server?
 - access project on ```dev``` folder and upload to your server
+- please note that some servers have special paths for the cgi-bin folder
 
 ## Dependencies
 - In order to start the local webserver called by the dev script, you must have Python3 installed on your machine
