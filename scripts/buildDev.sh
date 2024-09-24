@@ -51,7 +51,7 @@ cd dev
 if command -v python3 &> /dev/null
 then
     cd ../dev
-    python3 -m http.server 8080 --cgi
+    python3 -m http.server 3000 --cgi
 else
     echo "${bold}Local server error!!!${normal}"
     echo "This script requires Python to run a local server."
