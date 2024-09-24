@@ -12,11 +12,13 @@ uses
  
 procedure route1(aReq: TRequest; aResp: TResponse);
 begin
+  aResp.ContentType := 'text/html;charset=utf-8';
   aResp.content:='<h1>CGI route 1 called!</h1>';
 end;
  
 procedure route2(aReq: TRequest; aResp: TResponse);
 begin
+  aResp.ContentType := 'text/html;charset=utf-8';
   aResp.content:='<h1>Route 2 from CGI called!</h1>';
 end;
 
