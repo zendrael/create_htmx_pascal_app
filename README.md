@@ -24,6 +24,11 @@ It can also be compiled as a standalone server.
 - **check your browser to see if the project works**
 - CTRL+C on VScode terminal to stop the server
 
+## Recommended VSCode extensions
+
+- htmx-tags
+- OmniPascal - Open Preview
+
 ## What to upload to my own server?
 
 - access project on `dev` folder and upload to your server
