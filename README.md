@@ -29,6 +29,7 @@ It can also be compiled as a standalone server.
 - access project on `dev` folder and upload to your server
 - please note that some servers have special paths for the cgi-bin folder
 - if using as standalone server, set it up as you need
+- you can make the CGI (or app) binary smaller by using FPC compiler options to suit your needs
 
 ## Dependencies
 
