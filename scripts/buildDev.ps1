@@ -20,7 +20,6 @@ Remove-Item -Recurse -Force "dev\*" | Out-Null
 Write-Host "Copying files..."
 Copy-Item "index.html" "dev\"
 Copy-Item -Recurse "public\*" "dev\"
-Copy-Item -Recurse "src\forms" "dev\"
 
 Write-Host "Compiling to dev..."
 fpc "src\main.pas" -O3 -Ooregvar -Xg -Xs -XX `
