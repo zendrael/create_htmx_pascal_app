@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 
 ###############################################################################
-# buildDev.sh                                                                 #
-# Dev build script                                                            #
+# file:        buildDev.sh                                                    #
+# description: dev build script                                               #
+# source:      https://github.com/zendrael/create_htmx_pascal_app             #
 ###############################################################################
 
 if [ ! -d cgi-bin ]; then
@@ -26,10 +27,6 @@ cp -r src/forms dev/
 
 echo "Compiling to dev..."
 fpc src/main.pas -O3 -Ooregvar -Xg -Xs -XX \
--Fu"/usr/share/fpcsrc/3.2.2/packages" \
--Fu"/usr/share/fpcsrc/3.2.2/packages/*" \
--Fu"/usr/share/fpcsrc/3.2.2/packages/*/*" \
--Fu"/usr/share/fpcsrc/3.2.2/packages/*/*/*" \
 -Fu"src/*" -Fu"src/*/*" -Fu"src/*/*/*" \
 -o"cgi-bin/app.cgi" 
 
@@ -50,8 +47,7 @@ cd dev
 
 if command -v python3 &> /dev/null
 then
-    cd ../dev
-    python3 -m http.server 3000 --cgi
+    python3 -m http.server 8080 --cgi
 else
     echo "${bold}Local server error!!!${normal}"
     echo "This script requires Python to run a local server."

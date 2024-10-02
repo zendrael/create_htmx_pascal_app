@@ -1,7 +1,8 @@
-############################################################################
-# buildDev.ps1                                                            #
-# Dev build script                                                        #
-############################################################################
+###############################################################################
+# file:        buildDev.ps1                                                   #
+# description: dev build script                                               #
+# source:      https://github.com/zendrael/create_htmx_pascal_app             #
+###############################################################################
 
 if (-not (Test-Path "cgi-bin")) {
   New-Item -ItemType Directory -Name "cgi-bin" | Out-Null

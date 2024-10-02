@@ -33,7 +33,7 @@ It can also be compiled as a standalone server.
 
 - access project on `dev` folder and upload to your server
 - please note that some servers have special paths for the cgi-bin folder
-- if using as standalone server, set it up as you need
+- if using as standalone server, set it up as you need (code is commented)
 - you can make the CGI (or app) binary smaller by using FPC compiler options to suit your needs
 
 ## Dependencies
@@ -47,4 +47,4 @@ Any backend that receives requests and outputs HTML can be used.
 
 # Can I mix this with Pas2JS in the frontend?
 
-Besides being possible, using HTMX usually means using less JavaScript, so mixing Pas2JS (Pascal transpiled to JavaScript) would go against it and can lead to unnecessary problems and added size.
+Besides being possible, using HTMX usually means using less JavaScript, so mixing Pas2JS (Pascal transpiled to JavaScript) would go against it and can lead to unnecessary problems and added size. But all depends on what you need to do.
