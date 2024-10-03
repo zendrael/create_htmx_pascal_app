@@ -33,6 +33,9 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host "Moving cgi-bin folder to dev..."
 Move-Item "cgi-bin" "dev"
+if ((Test-Path "src\views")) {
+  Copy-Item -Recurse "src\views*" "dev\"
+}
 
 Write-Host ""
 Write-Host "Starting local server at http://localhost:3000"

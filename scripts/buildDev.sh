@@ -23,6 +23,9 @@ rm -Rf cgi-bin/*
 echo "Copying files..."
 cp index.html dev/
 cp -r public/* dev/
+if [ -d src/views ]; then
+	cp -r src/views dev/
+fi
 
 echo "Compiling to dev..."
 fpc src/main.pas -O3 -Ooregvar -Xg -Xs -XX \

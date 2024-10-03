@@ -12,26 +12,45 @@ uses
     cthreads, cmem,
   {$endif} 
   //fphttpapp, 
-  fpcgi, httpdefs, httproute;
+  fpcgi, httpdefs, httproute, 
+  Home, Clients, Products;
  
-procedure route1(aReq: TRequest; aResp: TResponse);
+procedure home(aReq: TRequest; aResp: TResponse);
+var
+  home: THome;
 begin
+  home := Thome.Create;
   aResp.ContentType := 'text/html;charset=utf-8';
-  aResp.content:='<h1 class="response">Welcome to the HTMX + Pascal world!</h1>';
+  aResp.content:= home.GetHTMLContent;
 end;
  
-procedure route2(aReq: TRequest; aResp: TResponse);
+procedure clients(aReq: TRequest; aResp: TResponse);
+var
+  clients: TClients;
 begin
+  clients := TClients.Create;
   aResp.ContentType := 'text/html;charset=utf-8';
-  aResp.content:='<h1>Route 2 from CGI called! Just an example.</h1>';
+  aResp.content:= clients.GetHTMLContent;
+end;
+
+procedure products(aReq: TRequest; aResp: TResponse);
+var
+  products: TProducts;
+begin
+  products := TProducts.Create;
+  aResp.ContentType := 'text/html;charset=utf-8';
+  aResp.content:= products.GetHTMLContent;
 end;
 
 var
   aDir : string; //only for localserver
 
 begin
-  HTTPRouter.registerRoute('/', @route1, true); //default route
-  HTTPRouter.registerRoute('/route2', @route2);
+  //Define the routes
+  HTTPRouter.registerRoute('/', @home, true); //default route
+  HTTPRouter.registerRoute('/clients', @clients);
+  HTTPRouter.registerRoute('/products', @products);
+
   // Application.port := 8080;
   // Application.threaded := true;
   // if Application.HasOption('d','directory') then
@@ -40,6 +59,7 @@ begin
   //   aDir:=ExtractFilePath(ParamStr(0))+'..\dev\';
   // aDir := ExpandFileName(aDir);
   // RegisterFileLocation('dev',aDir);
+
   Application.initialize;
   Application.run;
 end.
