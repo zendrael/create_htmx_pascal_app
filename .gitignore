@@ -1,4 +1,6 @@
+
 dev/*
+
 dist/*
 
 *~
@@ -68,3 +70,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+*Zone.Identifier
